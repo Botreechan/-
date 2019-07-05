@@ -3,14 +3,14 @@ import time
 
 import requests
 # file_path = r'E:\Onedriver\OneDrive - 广厚设计学校\02_Python\VSCode\Code\Project\myProject\快递查询'
-file_path = r'D:'
+file_path = r''
 
 def init():
-    path = pathlib.Path(file_path+'\history.csv')
+    path = pathlib.Path(file_path+'./history.csv')
     # print(path.is_file())
 
     if path.is_file()==True:
-        files = open(file_path+'\history.csv')
+        files = open(file_path+'./history.csv')
 
         print('**温馨提示**：查询到历史记录，可复制粘贴单号查询：'+'\n',files.read())
         check()
@@ -26,7 +26,7 @@ def info(comp_type,num):
         print(result.json()['data'][n]['time']+'\t',result.json()['data'][n]['context'])
     
     now = time.strftime("%Y.%m.%d\t%H:%M:%S")
-    with open(file_path+'\history.csv','a+') as ff:
+    with open(file_path+'./history.csv','a+') as ff:
         ff.write(now+'\t'+comp_type+'\t'+num+'\n')
 
 def check():
